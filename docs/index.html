@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micah Willins – Data Engineer / Solutions Expert</title>
+
+<style>
+    /* ===========================
+       BITBRIDGE BRAND VARIABLES
+       =========================== */
+    :root {
+        --bit-blue: #1F4B99;
+        --bridge-steel: #4C5C68;
+        --signal-teal: #2BBF9F;
+        --flow-white: #F7F9FC;
+        --accent-orange: #FF8A3D;
+        --text-dark: #222;
+        --text-light: #555;
+        --band-even: #F9FAFC;
+        --band-odd: #FFFFFF;
+    }
+
+    /* ===========================
+       BASE STYLING
+       =========================== */
+    body {
+        font-family: "Inter", "Aptos Display", Aptos Display, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: var(--flow-white);
+        color: var(--text-dark);
+        overflow-x: hidden;
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: min(1100px, calc(100vw - 32px));
+        max-width: 1100px;
+        margin: clamp(12px, 4vw, 40px) auto;
+        background: #fff;
+        padding: clamp(20px, 3vw, 40px) clamp(18px, 5vw, 60px);
+        box-shadow: 0 0 20px rgba(0,0,0,0.08);
+        border-radius: 10px;
+        border-left: 6px solid var(--bit-blue);
+    }
+
+    .top-banner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px 16px;
+        padding: 10px 14px;
+        margin-bottom: 14px;
+        border: 1px solid #d8e0ec;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #f6f9ff 0%, #eef8f6 100%);
+    }
+
+    .top-banner-label {
+        font-size: 0.9rem;
+        color: var(--bridge-steel);
+        font-weight: 600;
+        letter-spacing: 0.01em;
+    }
+
+    .top-banner-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .top-banner-links a {
+        text-decoration: none;
+        border: 1px solid #cfdae8;
+        background: #fff;
+        color: var(--bit-blue);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 0.92rem;
+        font-weight: 600;
+    }
+
+    .top-banner-links a:hover,
+    .top-banner-links a:focus-visible {
+        border-color: var(--bit-blue);
+        outline: none;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.4em;
+        font-weight: 700;
+        color: var(--bit-blue);
+    }
+
+    .contact {
+        margin-top: 10px;
+        font-size: 1.1em;
+        color: var(--bridge-steel);
+    }
+
+    .section-header {
+        font-size: 1.45em;
+        font-weight: 600;
+        margin-top: 40px;
+        margin-bottom: 14px;
+        padding-bottom: 6px;
+        border-bottom: 3px solid var(--bit-blue);
+        color: var(--bit-blue);
+    }
+
+    /* ===========================
+       COLLAPSIBLE SECTIONS
+       =========================== */
+    details {
+        margin-bottom: 22px;
+        border-radius: 8px;
+        background: var(--band-even);
+        border: 1px solid #ddd;
+        padding: 0;
+        transition: background 0.2s ease;
+    }
+
+    details:nth-child(odd) {
+        background: var(--band-odd);
+    }
+
+    summary {
+        padding: 14px 18px;
+        font-size: 1.18em;
+        font-weight: 600;
+        cursor: pointer;
+        background: linear-gradient(to right, #eef1f7, #f9fafc);
+        border-bottom: 1px solid #ddd;
+        user-select: none;
+        color: var(--bridge-steel);
+    }
+
+    summary::-webkit-details-marker {
+        color: var(--bit-blue);
+    }
+
+    details[open] summary {
+        border-bottom: 1px solid #ccc;
+        background: linear-gradient(to right, #e6ecf5, #f2f4f8);
+    }
+
+    details > div {
+        padding: 18px 22px;
+        background: #fff;
+        font-family: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
+        font-size: 0.98rem;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    details > div p {
+        margin: 0 0 6px;
+    }
+
+    ul {
+        margin: 8px 0 12px 20px;
+    }
+
+    .docx-outline,
+    .docx-outline ul {
+        margin: 2px 0 4px 18px;
+        padding-left: 14px;
+    }
+
+    .docx-outline li {
+        margin: 2px 0;
+    }
+
+    .docx-outline > li {
+        list-style-type: circle;
+    }
+
+    .docx-outline ul > li {
+        list-style-type: square;
+    }
+
+    .docx-outline ul ul > li {
+        list-style-type: disc;
+    }
+
+    .docx-outline ul ul ul > li {
+        list-style-type: circle;
+    }
+
+    .docx-outline .compact {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+
+    .docx-outline .subtle {
+        font-style: italic;
+    }
+
+    .has-collapsible-children {
+        list-style-position: outside;
+    }
+
+    .list-toggle-btn {
+        border: 0;
+        background: transparent;
+        color: var(--bit-blue);
+        cursor: pointer;
+        font-size: 1.75em;
+        font-weight: 800;
+        line-height: 1;
+        margin-right: 6px;
+        padding: 0;
+        vertical-align: middle;
+        touch-action: manipulation;
+    }
+
+    .list-collapsible[hidden] {
+        display: none;
+    }
+
+    /* ===========================
+       MOBILE OPTIMIZATION
+       =========================== */
+    @media (max-width: 768px) {
+        .container {
+            width: 100%;
+            margin: 0;
+            border-radius: 0;
+            padding: 24px 20px;
+            box-shadow: none;
+            border-left: none;
+            border-top: 6px solid var(--bit-blue);
+        }
+
+        .top-banner {
+            align-items: flex-start;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .top-banner-links {
+            width: 100%;
+        }
+
+        .top-banner-links a {
+            text-align: center;
+            flex: 1 1 30%;
+        }
+
+        h1 {
+            font-size: 1.9em;
+        }
+
+        .contact {
+            font-size: 1em;
+        }
+
+        summary {
+            font-size: 1.1em;
+            padding: 14px 16px;
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+        }
+
+        details > div {
+            padding: 14px 16px;
+        }
+
+        .section-header {
+            font-size: 1.3em;
+        }
+
+        .list-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 34px;
+            min-height: 34px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-right: 8px;
+            border: 1px solid #d7dee9;
+            border-radius: 999px;
+            background: #f4f7fc;
+        }
+
+        .docx-outline li {
+            line-height: 1.35;
+        }
+    }
+
+    /* ===========================
+       EXTRA-WIDE SCREEN POLISH
+       =========================== */
+    @media (min-width: 1400px) {
+        .container {
+            width: min(1300px, calc(100vw - 48px));
+            max-width: 1300px;
+            padding: 60px 80px;
+        }
+
+        h1 {
+            font-size: 2.6em;
+        }
+
+        summary {
+            font-size: 1.22em;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<section class="top-banner" aria-label="Quick recruiter links">
+    <div class="top-banner-label">Recruiter Quick Links</div>
+    <nav class="top-banner-links" aria-label="Recruiter quick actions">
+        <a href="mailto:Micah.Willins.88@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="assets/Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
+    </nav>
+</section>
+
+<h1>Micah Willins — Data Engineer / Solutions Expert</h1>
+<div class="contact">
+    (513) 313‑4820 | Micah.Willins.88@gmail.com | Cincinnati, OH |
+    <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank">LinkedIn</a>
+</div>
+
+<div class="section-header">Career Summary</div>
+<p>Strategic and tenacious data engineering leader with 14+ years experience implementing data architecture solutions in complex, compliance-driven environments. Adept at transforming disparate data sources into actionable intelligence, leading high-performance teams, and designing scalable metric frameworks that improve organizational governance and deliver clearer executive‑level visibility. Known for untraditional pathways, relentless curiosity, problem solving, and a forward‑looking business acumen that anticipates challenges and helps teams move confidently toward the right solutions.</p>
+
+<div class="section-header">Expertise</div>
+<p>Data Engineering Strategy | Agentic Workflows & Guardrails | Regulatory Metrics & Automation | ETL Development & APIs | Information Security Analytics | Cross-Functional Leadership | Data Governance | Agile / Scrum Frameworks | Mentorship & Talent Uplift</p>
+
+<div class="section-header">Technical Skills</div>
+<p>
+<b>Languages</b> {SQL, Python, SAS, PowerShell, VB, DAX}<br>
+<b>Platforms</b> {Tableau, Power BI, SSIS, SSRS, GitHub, ServiceNow}<br>
+<b>Databases</b> {SQL Server, PostgreSQL, MySQL, Oracle, SASGRID}<br>
+<b>Concepts</b> {Automation, Data Warehousing, API Integration, Agentic Development}<br>
+<b>Tools</b> {AQT, DB2, Crystal Reports, MS Office, DBeaver, VScode, SAS EGP}
+</p>
+
+<div class="section-header">Professional Experience</div>
+
+<!-- Principal Data Engineer -->
+<details>
+<summary>Principal Data Engineer, Information Security | Fifth Third Bank | Cincinnati, OH 2022–2026</summary>
+<div>
+<p><strong>Continuation of Metric Program Maturity</strong></p>
+<ul class="docx-outline">
+    <li>Expansion of data footprint, customers, and deliverables</li>
+</ul>
+
+<p><strong>Talent Development</strong></p>
+<ul class="docx-outline">
+    <li>Direct Reports
+        <ul>
+            <li>1 Co-Op</li>
+            <li>3 Contractors</li>
+            <li>1 Open FTE position
+                <ul>
+                    <li>absorbed within 30 days of approval due to reorg in 2025</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>Migration: Tableau -> Power BI</strong>
+        <ul>
+            <li><strong>2024-2025 | company wide Tableau Sunset Project</strong>
+                <ul>
+                    <li>Dashboard Suites for Operational & Leadership audiences (UX, KPI, KRI)
+                        <ul>
+                            <li>Business Continuity Management</li>
+                            <li>Data Loss Prevention</li>
+                            <li>Vulnerability Management</li>
+                            <li>Security & Awareness</li>
+                            <li>Cyber Risk</li>
+                            <li>Identity & Access Management</li>
+                            <li>Privileged Access Management</li>
+                        </ul>
+                    </li>
+                    <li>Overhaul Visualization tool & delivery methodologies
+                        <ul>
+                            <li>Due to limitations surrounding data load, inherent technology ability, and governance
+                                <ul>
+                                    <li>Updated data delivery process
+                                        <ul>
+                                            <li class="subtle">From: SAS / NAS / Tableau Server</li>
+                                            <li class="subtle">To: SAS / AWS PostgreSQL / Snowflake (SNOW *cloud) / Power BI</li>
+                                        </ul>
+                                    </li>
+                                    <li>Data Delivery method updated
+                                        <ul>
+                                            <li class="subtle">From: Raw meta data delivery for dashboard development within Tableau</li>
+                                            <li class="subtle">To: Aggregated data delivery, limiting Dashboard development. Minimal meta data delivery for end-user operational needs included for analyst purposes.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Issue between Active Directory LDAP & Azure Entra ID
+                        <ul>
+                            <li>The aforementioned issue was a blocker, jeopardizing the objective.</li>
+                            <li>For my own edification: I discussed the issue one-off with the groups involved, both their leaders and engineers.
+                                <ul>
+                                    <li>Recognized a pattern involving miscommunication driven by a fear of accountability by leadership groups.</li>
+                                    <li>Organized a cross-functional team addressing the issue
+                                        <ul>
+                                            <li>Impartial approach to resolution discovery, clarification of assumptions, conclusions, and reality; for all groups involved.</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Issue was resolved within 2 weeks of cross-functional team’s initial meet.
+                                <ul>
+                                    <li>Within 3 weeks of issue discovery</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li><strong>Program Automation</strong>
+        <ul>
+            <li><strong>Data Delivery Inspector</strong>
+                <ul>
+                    <li>Problem: inconsistent data delivery from manual datafile exchange into NAS automation processing</li>
+                    <li>Due to upstream dependencies (roles, technology/vendor, staffing)</li>
+                    <li>Development of dynamic data validation</li>
+                    <li>Executed via a custom Dynamic SAS Macro</li>
+                    <li>Data element assumed based on ‘who’ provided data and where they exist within the organization</li>
+                    <li>Data content parsed to determine ‘type’ and ‘classification’</li>
+                    <li>Compared with previously provided data files using:
+                        <ul>
+                            <li>Subject matter, file title, date/time provided, organization</li>
+                        </ul>
+                    </li>
+                    <li>Completes assumption based on confidence rating
+                        <ul>
+                            <li>Confidence rating &lt;90% automated emails communications are sent for internal review.</li>
+                            <li>Confidence rating &gt;=90%; data is processed via pipeline. By default, confidence rating couldn’t be above 90% unless the ‘assumptions’ made and processing of the data was able to be ingested regarding foreseen behavior</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Unstructured Data Mining</strong>
+                <ul>
+                    <li>Modeling based on the ‘data delivery inspector’; utilized an opportunity to streamline any unstructured data provided that needed review</li>
+                    <li>Created sub-programming based on ‘failures’ for confidence rating.</li>
+                    <li>Permitted the ability to parse and complete pattern recognition for data subjects in real-time while meeting with stakeholders.</li>
+                    <li>Accurately identified data behavior, trends, dependencies; highlighting opportunities and providing understand with stakeholders.</li>
+                </ul>
+            </li>
+            <li><strong>LLM: Agentic Standardization</strong>
+                <ul>
+                    <li>AI Hallucination</li>
+                    <li>Developed Agentic Repository of Identities, Skills, Personalities, and Perspectives
+                        <ul>
+                            <li>Executive, Sr Leader, Director, Individual Contributor, Auditor, Regulator</li>
+                            <li>Aligned ability to share skills based on ‘rules’</li>
+                        </ul>
+                    </li>
+                    <li>Completed Conversion Project of ‘PowerShell -> Python’ with only a 13% margin for err
+                        <ul>
+                            <li>Pointed the Agentic Model at a Business Requirement document that provided desired output, data location, etc.</li>
+                            <li>Completed conversion of 87 .ps1 scripts into 137 .py scripts</li>
+                            <li>Larger generation due to parsing scripts that completed multiple behaviors into separate processes for standardization and continuity purposes.</li>
+                            <li>Of 137 built, only 11 scripts required refinement.</li>
+                            <li>6 downstream updates were required due to changes</li>
+                        </ul>
+                    </li>
+                    <li><em>*Employment status interrupted further testing and environmental implementation across data subjects*</em></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Navigating Fed Examiners</li>
+    <li>Assisting with Governance/Audit language, responses, etc.</li>
+    <li>Introduction into leveraging LLM opportunities</li>
+</ul>
+</div>
+</details>
+
+<!-- Lead Data Engineer -->
+<details>
+<summary>Lead Data Engineer, Information Security | Fifth Third Bank | Cincinnati, OH 2020–2022</summary>
+<div>
+<p><strong>Continuation of Metric Program Maturity</strong></p>
+<ul class="docx-outline">
+    <li>Built and automated SAS-based data warehouse via REST APIs and PowerShell pipelines</li>
+    <li>Delivered analytics solutions to support compliance, audits, and risk oversight</li>
+</ul>
+
+<p><strong>Talent Development</strong></p>
+<ul class="docx-outline">
+    <li>Mentored engineering staff and introduced agile practices to optimize delivery efficiency</li>
+    <li>Direct Reports
+        <ul>
+            <li>1 Contractor</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>SAS Migration</strong>
+        <ul>
+            <li>SAS OLAP to SASGRID</li>
+            <li>Implementation of Virtual Machine</li>
+            <li>SAS Server Permissions and Control regulations interfered with business need/control</li>
+            <li>Creation of VM using a Functional ID for execution, scheduling, and maintenance of environment</li>
+            <li>Utilized Windows Task Scheduler</li>
+            <li>Using parameters for dynamic execution: VBS shell -- .PS1 shell -- SAS shell</li>
+            <li>Shells targeted NAS location permitting mutual collaboration without interfering or limiting controls within engineering staff</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Metric Program Ownership</li>
+    <li>Navigating beyond the User & Stakeholder: In depth discussions with Risk Management</li>
+</ul>
+</div>
+</details>
+
+<!-- Business Data Reporting Analyst -->
+<details>
+<summary>Business Data Reporting Analyst, Information Security | Fifth Third Bank | Cincinnati, OH 2019–2020</summary>
+<div>
+<p><strong>Development, Expansion, & Maintenance of Information Security’s Metric Program</strong></p>
+<ul class="docx-outline">
+    <li>Redesigned existing environment</li>
+    <li>Metric Program Oversight & Governance</li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>Program Environmental Overhaul</strong>
+        <ul>
+            <li>Architected foundational data engineering building blocks that transformed loose‑leaf Excel workflows into a governed, automated pipeline leveraging directory‑based ingestion, NAS storage, and SAS Grid processing for reliable, scalable visualization.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Navigating unstructured data</li>
+    <li>Recognizing environmental opportunities for growth within landscape</li>
+</ul>
+</div>
+</details>
+
+<!-- Contact Center Manager -->
+<details>
+<summary>Contact Center Reporting & Analytics Mgr, Operations | Fifth Third Bank | Cincinnati, OH 2017–2019</summary>
+<div>
+<p><strong>Returned to lead the team I was previously a part of within Operations</strong></p>
+<ul class="docx-outline">
+    <li>Returned to lead the team within Operations while expanding the internal analytics platform used to measure and improve operational efficiency.</li>
+</ul>
+
+<p><strong>Talent Development</strong></p>
+<ul class="docx-outline">
+    <li>Direct Reports
+        <ul>
+            <li>2 Direct Reports</li>
+        </ul>
+    </li>
+    <li>Managed internal analytics platform to measure and enhance operational efficiency</li>
+    <li>Collaborated with IT, Vendors, and Department Leads; to integrate business requirements</li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>Implementation of NiCE Speech Analytics</strong>
+        <ul>
+            <li>Vendor regarding phonetic speech recognition & analysis</li>
+            <li>Implementation of program, usage within contact center</li>
+        </ul>
+    </li>
+    <li><strong>Enhanced CX</strong></li>
+    <li><strong>Implementation of PinDrop</strong>
+        <ul>
+            <li>Vendor regarding the continuous identity verification platform</li>
+            <li>Onboarded new technology, validated scoping, connected with founding partners</li>
+            <li>Eliminated an average of 2.5 minutes per customer interaction</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Managing direct reports</li>
+    <li>Navigating cross-departmental factors & leaders</li>
+</ul>
+</div>
+</details>
+
+<!-- Application Developer -->
+<details>
+<summary>Application Developer, Information Technology | Fifth Third Bank | Cincinnati, OH 2017–2017</summary>
+<div>
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>Migration from SSMS 2012 to SSMS 2016</strong>
+        <ul>
+            <li>Maintaining compatibility</li>
+            <li>Updating syntax changes</li>
+            <li>Validation of mapping & Scheduling</li>
+        </ul>
+    </li>
+    <li><strong>‘Portal’ Application formalization</strong>
+        <ul>
+            <li>Onboard legacy business applications into formal IT systems</li>
+            <li>Supported long-term architecture</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Self-awareness regarding career aptitude and desires</li>
+</ul>
+</div>
+</details>
+
+<!-- Reporting Specialist II -->
+<details>
+<summary>Reporting Specialist II, Operations | Fifth Third Bank | Cincinnati, OH 2015–2017</summary>
+<div>
+<p><strong>Maintenance of existing BI stack</strong></p>
+<ul class="docx-outline">
+    <li>Development of end-user applications</li>
+    <li>SSIS Application tool</li>
+    <li>SSRS Dashboard creation embedded within VB application</li>
+    <li>KRI & KPI based reporting Including, but not limited to:
+        <ul>
+            <li>CSR | Business | Forecasting | Research | Environmental Maint.</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>Implementation of Automated Self-Service Repo</strong>
+        <ul>
+            <li>Performance based services: Scorecard(s), Rating(s), Survey(s)</li>
+            <li>Leadership based services: Attrition, Workforce Management, Employee behavior</li>
+            <li>Business based services: Data trends, Customer Issues, project(ed) release impact</li>
+        </ul>
+    </li>
+    <li><strong>Data Mining – Analysis’ & Research Initiative(s)</strong>
+        <ul>
+            <li>DB2 system containing IVR & Email activity</li>
+            <li>Tracing data behavior, isolating anomalies, locating outliers</li>
+            <li>Utilize findings to determine business needs and advise next course of action</li>
+            <li>Built DLC for ongoing, automated tracing that alerts staffing of up-tick behavior</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Ability to dynamically shift within multiple legacy systems</li>
+    <li>Exposure to multiple languages within a professional setting</li>
+    <li>Recognition of aptitude among pattern recognition</li>
+</ul>
+</div>
+</details>
+
+<!-- Axcess Financial -->
+<details>
+<summary>eBG Reporting Analyst, Operations | Axcess Financial | Cincinnati, OH 2012–2015</summary>
+<div>
+<p><strong>Maintenance of existing BI stack</strong></p>
+<ul class="docx-outline">
+    <li>Development of end-user applications</li>
+    <li>MS Access</li>
+    <li>SSRS Dashboard creation</li>
+    <li>KRI & KPI based reporting Including, but not limited to:
+        <ul>
+            <li>CSR | Forecasting | Research</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Notable Project(s)</strong></p>
+<ul class="docx-outline">
+    <li><strong>CSR Scorecard Automation</strong>
+        <ul>
+            <li>Performance based services: Scorecard(s), Rating(s), Survey(s)</li>
+            <li>Leadership based services: Attrition, Workforce Management, Employee behavior</li>
+        </ul>
+    </li>
+    <li><strong>CSR Incentive Automation</strong>
+        <ul>
+            <li>Dynamic Payroll Reporting based services: Transparent user-relative perspective, leader-relative perspective, Automation & integration with Payroll services</li>
+        </ul>
+    </li>
+</ul>
+
+<p><strong>Lessons Learned & Professional Growth</strong></p>
+<ul class="docx-outline">
+    <li>Ability to dynamically shift within multiple legacy systems</li>
+    <li>Exposure to multiple languages within a professional setting</li>
+    <li>Recognition of aptitude among pattern recognition</li>
+</ul>
+</div>
+</details>
+
+<div class="section-header">Education</div>
+<p>
+Fifth Third Bank — Information Security Leadership Program<br>
+University of Cincinnati — Cultural Anthropology<br>
+Cincinnati State — Computer Networking
+</p>
+
+<div class="section-header">AWARDS</div>
+<p>
+Horizon Award — Fifth Third Bank (2022)<br>
+Spirit of the Pin — Fifth Third Bank (Multiple years)
+</p>
+
+<div class="section-header">Documentation</div>
+<p>
+    <a href="#" onclick="openEmbeddedDoc('doc-tonja-specht-recommendation', 'Recommendation Letter - Tonja Specht'); return false;">Recommendation Letter - Tonja Specht</a><br>
+    <a href="#" onclick="openEmbeddedDoc('doc-john-jones-recognition', 'Spirit of the Pin - John Jones'); return false;">Spirit of the Pin - John Jones</a><br>
+    <a href="#" onclick="openEmbeddedDoc('doc-tina-smith-recognition', 'Spirit of the Pin - Tina Smith'); return false;">Spirit of the Pin - Tina Smith</a>
+</p>
+
+</div>
+
+<template id="doc-tonja-specht-recommendation">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recommendation Letter - Tonja Specht</title>
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 24px;
+        line-height: 1.55;
+        color: #222;
+    }
+    h1 {
+        margin-top: 0;
+        margin-bottom: 8px;
+        color: #1F4B99;
+    }
+    .meta {
+        margin: 0 0 14px;
+    }
+    .signature {
+        margin-top: 18px;
+    }
+</style>
+</head>
+<body>
+    <h1>Recommendation Letter</h1>
+    <p class="meta"><strong>Tonja Specht</strong><br>
+    Retired Senior Vice President, Fifth Third Bank<br>
+    Information Security Business Operations<br>
+    513-335-1691<br>
+    June 5, 2025</p>
+
+    <p>To Whom It May Concern,</p>
+
+    <p>I am pleased to recommend Micah Willins for any data engineering position. Micah was the Information Security Metrics Program Manager reporting to me while I was at Fifth Third. As a vital member of our Information Security Business Operations at Fifth Third Bank, Micah consistently demonstrated an exceptional level of expertise, diligence, and commitment to excellence.</p>
+
+    <p>In the financial sector, precision and reliability in data reporting are paramount, especially when regulators request metrics evidence. Micah single-handedly built and implemented a robust system for tracking and validating information security data. From writing the code and structuring the process to ensuring quality control measures, he meticulously safeguarded the integrity and accuracy of our reporting. His dedication went beyond duty; he takes his work personally, ensuring that every metric reflected the highest standard.</p>
+
+    <p>While reporting to me, Micah managed consultants and co-ops. He guided them through complex processes and ensured they had the knowledge necessary to succeed. His mentorship and expertise were repeatedly recognized by those he worked with. Both consultants and peers provided direct feedback to me about how much they learned from him. His ability to teach, lead, and inspire not only strengthened our team but also elevated the overall quality of our security program.</p>
+
+    <p>Moreover, his ability to respond swiftly to regulatory demands was invaluable. He worked tirelessly to develop new metrics, adapting to ever-changing compliance requirements with ingenuity and foresight. His proactive approach and technical expertise strengthened our security program and reinforced our commitment to transparency.</p>
+
+    <p>I have no doubt that Micah will be an asset wherever he applies his skills next. His work ethic, attention to detail, and unwavering dedication set him apart. I wholeheartedly recommend him and would be happy to discuss his qualifications further.</p>
+
+    <p class="signature">Sincerely,<br>
+    Tonja Specht</p>
+</body>
+</html>
+</template>
+
+<template id="doc-john-jones-recognition">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirit of the Pin - John Jones</title>
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 24px;
+        line-height: 1.55;
+        color: #222;
+    }
+    h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #1F4B99;
+    }
+    .meta {
+        margin: 0 0 14px;
+        color: #4C5C68;
+    }
+</style>
+</head>
+<body>
+    <h1>Spirit of the Pin Recognition</h1>
+    <p class="meta"><strong>Recognized By:</strong> John Jones<br>
+    <strong>Date:</strong> 5/29/2025<br>
+    <strong>Value:</strong> We Commit to Excellence</p>
+
+    <p>As Principal Data Engineer, Micah Willins exemplifies the Fifth Third Core Value of Work as One Bank. He took the initiative to organize a cross-functional team to address a complex syncing issue between Active Directory LDAP and Azure Entra ID that was impacting several technical teams across the bank.</p>
+
+    <p>Through his collaborative leadership, Micah ensured that all stakeholders clearly understood the problem and helped prioritize a timely and effective resolution. His actions not only fostered teamwork but also demonstrated the Core Value of Take Accountability.</p>
+
+    <p>Kudos to Micah for his courageous leadership and unwavering commitment to excellence!</p>
+</body>
+</html>
+</template>
+
+<template id="doc-tina-smith-recognition">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spirit of the Pin - Tina Smith</title>
+<style>
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        margin: 24px;
+        line-height: 1.55;
+        color: #222;
+    }
+    h1 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #1F4B99;
+    }
+    .meta {
+        margin: 0 0 14px;
+        color: #4C5C68;
+    }
+</style>
+</head>
+<body>
+    <h1>Spirit of the Pin Recognition</h1>
+    <p class="meta"><strong>Recognized By:</strong> Tina Smith<br>
+    <strong>Date:</strong> 2/7/2025<br>
+    <strong>Value:</strong> We Are Creative</p>
+
+    <p>Micah once again went above and beyond to assist me tremendously with a project. I was tasked with creating a duplicate repository of IT and IS policies from the Policy Center. Initially, the only method I knew was to manually download each of the 86 files. I reached out to Micah to see if he had a more efficient solution.</p>
+
+    <p>His expertise not only streamlined the process but also saved me countless hours of manual work.</p>
+
+    <p>Micah, your willingness to go above and beyond truly made a significant difference, and I am incredibly grateful for your support.</p>
+</body>
+</html>
+</template>
+
+<script>
+    function openEmbeddedDoc(templateId, fallbackTitle) {
+        var template = document.getElementById(templateId);
+        if (!template) {
+            return;
+        }
+
+        var docContent = template.innerHTML.trim();
+        if (!docContent) {
+            docContent = '<!doctype html><html><head><meta charset="UTF-8"><title>' +
+                fallbackTitle +
+                '</title></head><body><p>No content found.</p></body></html>';
+        }
+
+        // Primary path: Blob URL is more reliable on mobile than document.write to a popup.
+        try {
+            var blob = new Blob([docContent], { type: 'text/html;charset=utf-8' });
+            var blobUrl = URL.createObjectURL(blob);
+            var blobWindow = window.open(blobUrl, '_blank');
+            if (blobWindow) {
+                setTimeout(function () {
+                    URL.revokeObjectURL(blobUrl);
+                }, 60000);
+                return;
+            }
+        } catch (error) {
+            // Fall through to compatibility fallback.
+        }
+
+        // Fallback path for browsers that block Blob URLs in new tabs.
+        var newWindow = window.open('about:blank', '_blank');
+        if (!newWindow) {
+            return;
+        }
+
+        newWindow.document.open();
+        newWindow.document.write(docContent);
+        newWindow.document.close();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        function closeOtherSections(activeSection) {
+            var allSections = document.querySelectorAll('details');
+            allSections.forEach(function (otherSection) {
+                if (otherSection !== activeSection) {
+                    otherSection.removeAttribute('open');
+                }
+            });
+        }
+
+        function bindSectionAccordion() {
+            var allSections = document.querySelectorAll('details');
+            allSections.forEach(function (section) {
+                // Ensure a consistent collapsed initial state across browsers.
+                section.removeAttribute('open');
+
+                section.addEventListener('toggle', function () {
+                    if (section.open) {
+                        closeOtherSections(section);
+                    }
+                });
+
+                var summary = section.querySelector('summary');
+                if (!summary) {
+                    return;
+                }
+
+                summary.addEventListener('click', function () {
+                    window.requestAnimationFrame(function () {
+                        if (section.open) {
+                            closeOtherSections(section);
+                        }
+                    });
+                });
+            });
+        }
+
+        function hasDirectChildTag(element, tagName) {
+            return Array.from(element.children).some(function (child) {
+                return child.tagName === tagName;
+            });
+        }
+
+        function hasDirectToggleButton(element) {
+            return Array.from(element.children).some(function (child) {
+                return child.classList && child.classList.contains('list-toggle-btn');
+            });
+        }
+
+        function bindNestedListToggles() {
+            var allLists = document.querySelectorAll('ul');
+            allLists.forEach(function (list) {
+                var directItems = Array.from(list.children).filter(function (child) {
+                    return child.tagName === 'LI';
+                });
+                var hasNestedLists = directItems.some(function (item) {
+                    return hasDirectChildTag(item, 'UL');
+                });
+                var shouldBeCollapsible = directItems.length > 2 || hasNestedLists;
+
+                if (!shouldBeCollapsible) {
+                    return;
+                }
+
+                var parentItem = list.parentElement;
+                if (!parentItem || parentItem.tagName !== 'LI') {
+                    return;
+                }
+
+                if (hasDirectToggleButton(parentItem)) {
+                    return;
+                }
+
+                parentItem.classList.add('has-collapsible-children');
+                list.classList.add('list-collapsible');
+
+                var toggleButton = document.createElement('button');
+                toggleButton.type = 'button';
+                toggleButton.className = 'list-toggle-btn';
+                toggleButton.setAttribute('aria-expanded', 'false');
+                toggleButton.textContent = '▸';
+
+                list.hidden = true;
+
+                toggleButton.addEventListener('click', function () {
+                    var isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+                    toggleButton.setAttribute('aria-expanded', String(!isExpanded));
+                    toggleButton.textContent = isExpanded ? '▸' : '▾';
+                    list.hidden = isExpanded;
+                });
+
+                parentItem.insertBefore(toggleButton, parentItem.firstChild);
+            });
+        }
+
+        bindSectionAccordion();
+        bindNestedListToggles();
+    });
+</script>
+</body>
+</html>
+
+
