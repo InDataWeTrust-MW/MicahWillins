@@ -327,7 +327,7 @@
     <nav class="top-banner-links" aria-label="Recruiter quick actions">
         <a href="mailto:Micah.Willins.88@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/InDataWeTrust-MW/MicahWillins/blob/main/assets/Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
+        <a href="https://github.com/InDataWeTrust-MW/MicahWillins/blob/main/assets/Micah-Willins-Resume.pdf" class="pdf-download-link" data-download-filename="Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
     </nav>
 </section>
 
@@ -1022,11 +1022,54 @@ Spirit of the Pin — Fifth Third Bank (Multiple years)
             });
         }
 
+        function bindPdfDownloadLinks() {
+            var downloadLinks = document.querySelectorAll('.pdf-download-link');
+            downloadLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    var originalUrl = link.getAttribute('href');
+                    if (!originalUrl) {
+                        return;
+                    }
+
+                    var rawUrl = originalUrl
+                        .replace('https://github.com/', 'https://raw.githubusercontent.com/')
+                        .replace('/blob/', '/');
+
+                    fetch(rawUrl)
+                        .then(function (response) {
+                            if (!response.ok) {
+                                throw new Error('Download failed');
+                            }
+                            return response.blob();
+                        })
+                        .then(function (blob) {
+                            var objectUrl = URL.createObjectURL(blob);
+                            var tempLink = document.createElement('a');
+                            tempLink.href = objectUrl;
+                            tempLink.download = link.getAttribute('data-download-filename') || 'resume.pdf';
+                            document.body.appendChild(tempLink);
+                            tempLink.click();
+                            tempLink.remove();
+                            URL.revokeObjectURL(objectUrl);
+                        })
+                        .catch(function () {
+                            window.open(rawUrl, '_blank', 'noopener');
+                        });
+                });
+            });
+        }
+
+        bindPdfDownloadLinks();
         bindSectionAccordion();
         bindNestedListToggles();
     });
 </script>
 </body>
 </html>
+
+
+
 
 
