@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXJ3TKQQQ6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QXJ3TKQQQ6');
-</script>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micah Willins Resume</title>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QXJ3TKQQQ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-QXJ3TKQQQ6');
+  </script>
 </head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Micah Willins – Data Engineer / Solutions Expert</title>
 
 <style>
@@ -84,35 +87,70 @@
 
     .top-banner-links a {
         text-decoration: none;
-        border: 1px solid #cfdae8;
-        background: #fff;
+        border: 1px solid #cfe0f4;
+        background: linear-gradient(180deg, #f9fbff 0%, #eaf2ff 100%);
         color: var(--bit-blue);
-        padding: 6px 10px;
+        padding: 7px 12px;
         border-radius: 999px;
         font-size: 0.92rem;
-        font-weight: 600;
+        font-weight: 700;
+        box-shadow: 0 3px 10px rgba(31, 75, 153, 0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
     }
 
     .top-banner-links a:hover,
     .top-banner-links a:focus-visible {
         border-color: var(--bit-blue);
+        box-shadow: 0 6px 16px rgba(31, 75, 153, 0.18), inset 0 1px 0 rgba(255,255,255,0.8);
+        transform: translateY(-1px);
         outline: none;
+    }
+
+    .identity-block {
+        margin-bottom: 18px;
     }
 
     h1 {
         margin: 0;
-        font-size: 2.4em;
+        font-size: 2.45em;
         font-weight: 700;
         color: var(--bit-blue);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+    }
+
+    .title-line {
+        margin-top: 8px;
+        font-size: 1.04em;
+        font-weight: 600;
+        color: var(--bridge-steel);
+        letter-spacing: 0.01em;
     }
 
     .contact {
-        margin-top: 10px;
-        font-size: 1.1em;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        margin-top: 14px;
+        padding: 12px 16px;
+        font-size: 1rem;
         color: var(--bridge-steel);
+        border: 1px solid #dfe7f2;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #f9fbff 0%, #f3f7fb 100%);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 1px 2px rgba(31, 75, 153, 0.04);
+    }
+
+    .contact-item {
+        white-space: nowrap;
     }
 
     .section-header {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        flex-wrap: wrap;
         font-size: 1.45em;
         font-weight: 600;
         margin-top: 40px;
@@ -120,6 +158,14 @@
         padding-bottom: 6px;
         border-bottom: 3px solid var(--bit-blue);
         color: var(--bit-blue);
+    }
+
+    .section-header-note {
+        font-size: 0.72em;
+        font-style: italic;
+        font-weight: 500;
+        color: var(--text-light);
+        letter-spacing: 0.01em;
     }
 
     /* ===========================
@@ -335,179 +381,52 @@
     <nav class="top-banner-links" aria-label="Recruiter quick actions">
         <a href="mailto:Micah.Willins.88@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com/InDataWeTrust-MW/MicahWillins/blob/main/assets/Micah-Willins-Resume.pdf" class="pdf-download-link" data-download-filename="Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
+        <a href="https://indatawetrust-mw.github.io/MicahWillins/" target="_blank" rel="noopener noreferrer">View Hosted Resume</a>
+            <a href="../assets/Micah-Willins-Resume.pdf" class="pdf-download-link" data-download-filename="Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer">Download PDF</a>
     </nav>
 </section>
 
-<h1>Micah Willins — Data Engineer / Solutions Expert</h1>
-<div class="contact">
-    (513) 313‑4820 | Micah.Willins.88@gmail.com | Cincinnati, OH |
-    <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank">LinkedIn</a>
+<div class="identity-block">
+    <h1>Micah Willins</h1>
+    <div class="title-line">Senior Data Engineer / Data &amp; Visualization Leader</div>
+    <div class="contact">
+        <span class="contact-item">(513) 313‑4820</span>
+        <span class="contact-item">|</span>
+        <span class="contact-item">Micah.Willins.88@gmail.com</span>
+        <span class="contact-item">|</span>
+        <span class="contact-item">Cincinnati, OH</span>
+    </div>
 </div>
 
 <div class="section-header">Career Summary</div>
-<p>Strategic and tenacious data engineering leader with 14+ years experience implementing data architecture solutions in complex, compliance-driven environments. Adept at transforming disparate data sources into actionable intelligence, leading high-performance teams, and designing scalable metric frameworks that improve organizational governance and deliver clearer executive‑level visibility. Known for untraditional pathways, relentless curiosity, problem solving, and a forward‑looking business acumen that anticipates challenges and helps teams move confidently toward the right solutions.</p>
+<p>Senior data engineer and analytics leader with 14+ years of experience building scalable data platforms, modernizing reporting workflows, and translating operational and regulatory requirements into actionable insight. Experienced in designing trusted data pipelines, improving governance, delivering executive-ready visual analytics, and aligning technical work with business priorities.</p>
 
 <div class="section-header">Expertise</div>
-<p>Data Engineering Strategy | Agentic Workflows & Guardrails | Regulatory Metrics & Automation | ETL Development & APIs | Information Security Analytics | Cross-Functional Leadership | Data Governance | Agile / Scrum Frameworks | Mentorship & Talent Uplift</p>
+<p>Data Architecture | ETL & API Integration | Reporting & Visualization Modernization | Business Intelligence | Data Governance | Data Quality | Workflow Automation | KPI & Metric Design | Cross-Functional Leadership | Stakeholder Alignment | Operational Decision Support</p>
 
 <div class="section-header">Technical Skills</div>
 <p>
 <b>Languages</b> {SQL, Python, SAS, PowerShell, VB, DAX}<br>
-<b>Platforms</b> {Tableau, Power BI, SSIS, SSRS, GitHub, ServiceNow}<br>
-<b>Databases</b> {SQL Server, PostgreSQL, MySQL, Oracle, SASGRID}<br>
-<b>Concepts</b> {Automation, Data Warehousing, API Integration, Agentic Development}<br>
-<b>Tools</b> {AQT, DB2, Crystal Reports, MS Office, DBeaver, VScode, SAS EGP}
+<b>BI & Visualization</b> {Tableau, Power BI, SSIS, SSRS, Dashboard Design}<br>
+<b>Data Platforms</b> {SQL Server, PostgreSQL, MySQL, Oracle, SASGRID, AWS, Azure}<br>
+<b>Automation & Integration</b> {ETL, API Integration, Workflow Automation, SaaS Integrations}<br>
+<b>Tools</b> {GitHub, ServiceNow, Workday, MS O365, SSMS, DBeaver, VS Code, SAS EGP}
 </p>
 
-<div class="section-header">Professional Experience</div>
+<div class="section-header">Professional Experience <span class="section-header-note">Expand roles for details</span></div>
 
 <!-- Principal Data Engineer -->
-<details>
+<details open>
 <summary>Principal Data Engineer, Information Security | Fifth Third Bank | Cincinnati, OH 2022–2026</summary>
 <div>
-<p><strong>Continuation of Metric Program Maturity</strong></p>
+<p><strong>Enterprise Data, Visualization & Reporting Modernization</strong></p>
 <ul class="docx-outline">
-    <li>Expansion of data footprint, customers, and deliverables</li>
-</ul>
-
-<p><strong>Talent Development</strong></p>
-<ul class="docx-outline">
-    <li>Direct Reports
-        <ul>
-            <li>1 Co-Op</li>
-            <li>3 Contractors</li>
-            <li>1 Open FTE position
-                <ul>
-                    <li>absorbed within 30 days of approval due to reorg in 2025</li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>Migration: Tableau -> Power BI</strong>
-        <ul>
-            <li><strong>2024-2025 | company wide Tableau Sunset Project</strong>
-                <ul>
-                    <li>Dashboard Suites for Operational & Leadership audiences (UX, KPI, KRI)
-                        <ul>
-                            <li>Business Continuity Management</li>
-                            <li>Data Loss Prevention</li>
-                            <li>Vulnerability Management</li>
-                            <li>Security & Awareness</li>
-                            <li>Cyber Risk</li>
-                            <li>Identity & Access Management</li>
-                            <li>Privileged Access Management</li>
-                        </ul>
-                    </li>
-                    <li>Overhaul Visualization tool & delivery methodologies
-                        <ul>
-                            <li>Due to limitations surrounding data load, inherent technology ability, and governance
-                                <ul>
-                                    <li>Updated data delivery process
-                                        <ul>
-                                            <li class="subtle">From: SAS / NAS / Tableau Server</li>
-                                            <li class="subtle">To: SAS / AWS PostgreSQL / Snowflake (SNOW *cloud) / Power BI</li>
-                                        </ul>
-                                    </li>
-                                    <li>Data Delivery method updated
-                                        <ul>
-                                            <li class="subtle">From: Raw meta data delivery for dashboard development within Tableau</li>
-                                            <li class="subtle">To: Aggregated data delivery, limiting Dashboard development. Minimal meta data delivery for end-user operational needs included for analyst purposes.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>Issue between Active Directory LDAP & Azure Entra ID
-                        <ul>
-                            <li>The aforementioned issue was a blocker, jeopardizing the objective.</li>
-                            <li>For my own edification: I discussed the issue one-off with the groups involved, both their leaders and engineers.
-                                <ul>
-                                    <li>Recognized a pattern involving miscommunication driven by a fear of accountability by leadership groups.</li>
-                                    <li>Organized a cross-functional team addressing the issue
-                                        <ul>
-                                            <li>Impartial approach to resolution discovery, clarification of assumptions, conclusions, and reality; for all groups involved.</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>Issue was resolved within 2 weeks of cross-functional team’s initial meet.
-                                <ul>
-                                    <li>Within 3 weeks of issue discovery</li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li><strong>Program Automation</strong>
-        <ul>
-            <li><strong>Data Delivery Inspector</strong>
-                <ul>
-                    <li>Problem: inconsistent data delivery from manual datafile exchange into NAS automation processing</li>
-                    <li>Due to upstream dependencies (roles, technology/vendor, staffing)</li>
-                    <li>Development of dynamic data validation</li>
-                    <li>Executed via a custom Dynamic SAS Macro</li>
-                    <li>Data element assumed based on ‘who’ provided data and where they exist within the organization</li>
-                    <li>Data content parsed to determine ‘type’ and ‘classification’</li>
-                    <li>Compared with previously provided data files using:
-                        <ul>
-                            <li>Subject matter, file title, date/time provided, organization</li>
-                        </ul>
-                    </li>
-                    <li>Completes assumption based on confidence rating
-                        <ul>
-                            <li>Confidence rating &lt;90% automated emails communications are sent for internal review.</li>
-                            <li>Confidence rating &gt;=90%; data is processed via pipeline. By default, confidence rating couldn’t be above 90% unless the ‘assumptions’ made and processing of the data was able to be ingested regarding foreseen behavior</li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li><strong>Unstructured Data Mining</strong>
-                <ul>
-                    <li>Modeling based on the ‘data delivery inspector’; utilized an opportunity to streamline any unstructured data provided that needed review</li>
-                    <li>Created sub-programming based on ‘failures’ for confidence rating.</li>
-                    <li>Permitted the ability to parse and complete pattern recognition for data subjects in real-time while meeting with stakeholders.</li>
-                    <li>Accurately identified data behavior, trends, dependencies; highlighting opportunities and providing understand with stakeholders.</li>
-                </ul>
-            </li>
-            <li><strong>LLM: Agentic Standardization</strong>
-                <ul>
-                    <li>AI Hallucination</li>
-                    <li>Developed Agentic Repository of Identities, Skills, Personalities, and Perspectives
-                        <ul>
-                            <li>Executive, Sr Leader, Director, Individual Contributor, Auditor, Regulator</li>
-                            <li>Aligned ability to share skills based on ‘rules’</li>
-                        </ul>
-                    </li>
-                    <li>Completed Conversion Project of ‘PowerShell -> Python’ with only a 13% margin for err
-                        <ul>
-                            <li>Pointed the Agentic Model at a Business Requirement document that provided desired output, data location, etc.</li>
-                            <li>Completed conversion of 87 .ps1 scripts into 137 .py scripts</li>
-                            <li>Larger generation due to parsing scripts that completed multiple behaviors into separate processes for standardization and continuity purposes.</li>
-                            <li>Of 137 built, only 11 scripts required refinement.</li>
-                            <li>6 downstream updates were required due to changes</li>
-                        </ul>
-                    </li>
-                    <li><em>*Employment status interrupted further testing and environmental implementation across data subjects*</em></li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Navigating Fed Examiners</li>
-    <li>Assisting with Governance/Audit language, responses, etc.</li>
-    <li>Introduction into leveraging LLM opportunities</li>
+    <li>Led enterprise metric and reporting modernization in a regulated financial environment, improving governance, accountability, and executive visibility.</li>
+    <li>Drove a Tableau-to-Power BI transformation, standardizing reporting patterns and improving consistency for operational and leadership stakeholders.</li>
+    <li>Designed and delivered executive-facing visualizations and KPI frameworks that translated complex security data into clear, decision-ready narratives.</li>
+    <li>Resolved cross-functional data quality and identity issues across AD, LDAP, and Entra ID to improve trust in critical reporting pipelines.</li>
+    <li>Built automated validation and reconciliation workflows that reduced manual remediation and increased confidence in metric delivery.</li>
+    <li>Partnered across teams to align technical execution with business needs while mentoring co-op and contractor resources to maintain continuity on critical programs.</li>
 </ul>
 </div>
 </details>
@@ -516,41 +435,13 @@
 <details>
 <summary>Lead Data Engineer, Information Security | Fifth Third Bank | Cincinnati, OH 2020–2022</summary>
 <div>
-<p><strong>Continuation of Metric Program Maturity</strong></p>
+<p><strong>Automation, Compliance Reporting & Platform Modernization</strong></p>
 <ul class="docx-outline">
-    <li>Built and automated SAS-based data warehouse via REST APIs and PowerShell pipelines</li>
-    <li>Delivered analytics solutions to support compliance, audits, and risk oversight</li>
-</ul>
-
-<p><strong>Talent Development</strong></p>
-<ul class="docx-outline">
-    <li>Mentored engineering staff and introduced agile practices to optimize delivery efficiency</li>
-    <li>Direct Reports
-        <ul>
-            <li>1 Contractor</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>SAS Migration</strong>
-        <ul>
-            <li>SAS OLAP to SASGRID</li>
-            <li>Implementation of Virtual Machine</li>
-            <li>SAS Server Permissions and Control regulations interfered with business need/control</li>
-            <li>Creation of VM using a Functional ID for execution, scheduling, and maintenance of environment</li>
-            <li>Utilized Windows Task Scheduler</li>
-            <li>Using parameters for dynamic execution: VBS shell -- .PS1 shell -- SAS shell</li>
-            <li>Shells targeted NAS location permitting mutual collaboration without interfering or limiting controls within engineering staff</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Metric Program Ownership</li>
-    <li>Navigating beyond the User & Stakeholder: In depth discussions with Risk Management</li>
+    <li>Built and automated SAS-based warehouse and reporting workflows using REST APIs and PowerShell orchestration to improve reliability and reduce manual processing.</li>
+    <li>Delivered compliance, audit, and risk analytics to support governance decisions and executive reporting across information security teams.</li>
+    <li>Created reporting structures and visual explanations that made complex compliance data accessible to non-technical stakeholders and leadership.</li>
+    <li>Led platform modernization and environment hardening to improve scalability, reduce maintenance burden, and strengthen operational stability.</li>
+    <li>Developed delivery practices and mentoring frameworks that improved team efficiency, supportability, and execution quality across reporting programs.</li>
 </ul>
 </div>
 </details>
@@ -559,99 +450,38 @@
 <details>
 <summary>Business Data Reporting Analyst, Information Security | Fifth Third Bank | Cincinnati, OH 2019–2020</summary>
 <div>
-<p><strong>Development, Expansion, & Maintenance of Information Security’s Metric Program</strong></p>
+<p><strong>Metric Program Development, Data Storytelling & Governance</strong></p>
 <ul class="docx-outline">
-    <li>Redesigned existing environment</li>
-    <li>Metric Program Oversight & Governance</li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>Program Environmental Overhaul</strong>
-        <ul>
-            <li>Architected foundational data engineering building blocks that transformed loose‑leaf Excel workflows into a governed, automated pipeline leveraging directory‑based ingestion, NAS storage, and SAS Grid processing for reliable, scalable visualization.</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Navigating unstructured data</li>
-    <li>Recognizing environmental opportunities for growth within landscape</li>
+    <li>Expanded and redesigned the information security metric program to create more reliable reporting processes for leadership and operational stakeholders.</li>
+    <li>Transformed ad hoc Excel workflows into a repeatable data pipeline using directory-based ingestion, NAS storage, and SAS Grid processing.</li>
+    <li>Built reporting and visualization structures that turned raw technical metrics into clearer decision narratives for security, risk, and governance teams.</li>
 </ul>
 </div>
 </details>
 
 <!-- Contact Center Manager -->
 <details>
-<summary>Contact Center Reporting & Analytics Mgr, Operations | Fifth Third Bank | Cincinnati, OH 2017–2019</summary>
+<summary>Contact Center Reporting & Analytics Manager, Operations | Fifth Third Bank | Cincinnati, OH 2017–2019</summary>
 <div>
-<p><strong>Returned to lead the team I was previously a part of within Operations</strong></p>
+<p><strong>Operational Analytics, KPI Design & Team Leadership</strong></p>
 <ul class="docx-outline">
-    <li>Returned to lead the team within Operations while expanding the internal analytics platform used to measure and improve operational efficiency.</li>
-</ul>
-
-<p><strong>Talent Development</strong></p>
-<ul class="docx-outline">
-    <li>Direct Reports
-        <ul>
-            <li>2 Direct Reports</li>
-        </ul>
-    </li>
-    <li>Managed internal analytics platform to measure and enhance operational efficiency</li>
-    <li>Collaborated with IT, Vendors, and Department Leads; to integrate business requirements</li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>Implementation of NiCE Speech Analytics</strong>
-        <ul>
-            <li>Vendor regarding phonetic speech recognition & analysis</li>
-            <li>Implementation of program, usage within contact center</li>
-        </ul>
-    </li>
-    <li><strong>Enhanced CX</strong></li>
-    <li><strong>Implementation of PinDrop</strong>
-        <ul>
-            <li>Vendor regarding the continuous identity verification platform</li>
-            <li>Onboarded new technology, validated scoping, connected with founding partners</li>
-            <li>Eliminated an average of 2.5 minutes per customer interaction</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Managing direct reports</li>
-    <li>Navigating cross-departmental factors & leaders</li>
+    <li>Led reporting and analytics for customer operations, providing leadership with actionable performance metrics and process improvement guidance.</li>
+    <li>Built and supported an internal analytics platform used to monitor operational efficiency, service quality, and customer experience outcomes.</li>
+    <li>Created dashboards and visual performance views that translated operational data into clear management narratives for both frontline and executive audiences.</li>
+    <li>Partnered with IT, vendors, and business leaders to implement speech analytics and identity verification solutions that increased visibility and improved customer experience.</li>
+    <li>Managed direct reports and coordinated cross-functional execution across operational and technology teams.</li>
 </ul>
 </div>
 </details>
 
 <!-- Application Developer -->
 <details>
-<summary>Application Developer, Information Technology | Fifth Third Bank | Cincinnati, OH 2017–2017</summary>
+<summary>Application Developer, Information Technology | Fifth Third Bank | Cincinnati, OH 2017</summary>
 <div>
-<p><strong>Notable Project(s)</strong></p>
+<p><strong>Systems Integration & Application Support</strong></p>
 <ul class="docx-outline">
-    <li><strong>Migration from SSMS 2012 to SSMS 2016</strong>
-        <ul>
-            <li>Maintaining compatibility</li>
-            <li>Updating syntax changes</li>
-            <li>Validation of mapping & Scheduling</li>
-        </ul>
-    </li>
-    <li><strong>‘Portal’ Application formalization</strong>
-        <ul>
-            <li>Onboard legacy business applications into formal IT systems</li>
-            <li>Supported long-term architecture</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Self-awareness regarding career aptitude and desires</li>
+    <li>Supported legacy application migration and modernization efforts, improving compatibility and operational stability.</li>
+    <li>Partnered with business and technical stakeholders to validate requirements, update scripts, and streamline application support processes.</li>
 </ul>
 </div>
 </details>
@@ -660,42 +490,12 @@
 <details>
 <summary>Reporting Specialist II, Operations | Fifth Third Bank | Cincinnati, OH 2015–2017</summary>
 <div>
-<p><strong>Maintenance of existing BI stack</strong></p>
+<p><strong>Operational Reporting, Dashboarding & Data Mining</strong></p>
 <ul class="docx-outline">
-    <li>Development of end-user applications</li>
-    <li>SSIS Application tool</li>
-    <li>SSRS Dashboard creation embedded within VB application</li>
-    <li>KRI & KPI based reporting Including, but not limited to:
-        <ul>
-            <li>CSR | Business | Forecasting | Research | Environmental Maint.</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>Implementation of Automated Self-Service Repo</strong>
-        <ul>
-            <li>Performance based services: Scorecard(s), Rating(s), Survey(s)</li>
-            <li>Leadership based services: Attrition, Workforce Management, Employee behavior</li>
-            <li>Business based services: Data trends, Customer Issues, project(ed) release impact</li>
-        </ul>
-    </li>
-    <li><strong>Data Mining – Analysis’ & Research Initiative(s)</strong>
-        <ul>
-            <li>DB2 system containing IVR & Email activity</li>
-            <li>Tracing data behavior, isolating anomalies, locating outliers</li>
-            <li>Utilize findings to determine business needs and advise next course of action</li>
-            <li>Built DLC for ongoing, automated tracing that alerts staffing of up-tick behavior</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Ability to dynamically shift within multiple legacy systems</li>
-    <li>Exposure to multiple languages within a professional setting</li>
-    <li>Recognition of aptitude among pattern recognition</li>
+    <li>Created and maintained BI and operational reporting solutions for customer service, workforce, and performance metrics using SSIS and SSRS.</li>
+    <li>Developed self-service reporting capabilities that expanded access to scorecards, trend analysis, and workforce metrics across the organization.</li>
+    <li>Built operational dashboards and visual analyses that helped leaders understand performance patterns and respond quickly to emerging issues.</li>
+    <li>Applied data mining techniques to detect anomalies and outliers, enabling teams to address issues before they affected performance.</li>
 </ul>
 </div>
 </details>
@@ -704,53 +504,26 @@
 <details>
 <summary>eBG Reporting Analyst, Operations | Axcess Financial | Cincinnati, OH 2012–2015</summary>
 <div>
-<p><strong>Maintenance of existing BI stack</strong></p>
+<p><strong>Reporting Automation & Operations Analytics</strong></p>
 <ul class="docx-outline">
-    <li>Development of end-user applications</li>
-    <li>MS Access</li>
-    <li>SSRS Dashboard creation</li>
-    <li>KRI & KPI based reporting Including, but not limited to:
-        <ul>
-            <li>CSR | Forecasting | Research</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Notable Project(s)</strong></p>
-<ul class="docx-outline">
-    <li><strong>CSR Scorecard Automation</strong>
-        <ul>
-            <li>Performance based services: Scorecard(s), Rating(s), Survey(s)</li>
-            <li>Leadership based services: Attrition, Workforce Management, Employee behavior</li>
-        </ul>
-    </li>
-    <li><strong>CSR Incentive Automation</strong>
-        <ul>
-            <li>Dynamic Payroll Reporting based services: Transparent user-relative perspective, leader-relative perspective, Automation & integration with Payroll services</li>
-        </ul>
-    </li>
-</ul>
-
-<p><strong>Lessons Learned & Professional Growth</strong></p>
-<ul class="docx-outline">
-    <li>Ability to dynamically shift within multiple legacy systems</li>
-    <li>Exposure to multiple languages within a professional setting</li>
-    <li>Recognition of aptitude among pattern recognition</li>
+    <li>Built scorecard, incentive, and workforce reporting solutions that improved visibility into operational performance and key drivers.</li>
+    <li>Automated payroll and operational reporting workflows, reducing manual effort and improving consistency across stakeholder groups.</li>
+    <li>Translated business requirements into repeatable reporting products that supported customer service operations and leadership decisions.</li>
 </ul>
 </div>
 </details>
 
 <div class="section-header">Education</div>
 <p>
-Fifth Third Bank — Information Security Leadership Program<br>
-University of Cincinnati — Cultural Anthropology<br>
-Cincinnati State — Computer Networking
+University of Cincinnati — Coursework in Cultural Anthropology, 2007–2009<br>
+Cincinnati State — Coursework in Computer Networking, 2010–2011<br>
+Fifth Third Bank — Information Security Leadership Program, 2022–2023
 </p>
 
-<div class="section-header">AWARDS</div>
+<div class="section-header">Awards</div>
 <p>
 Horizon Award — Fifth Third Bank (2022)<br>
-Spirit of the Pin — Fifth Third Bank (Multiple years)
+Spirit of the Pin — Fifth Third Bank (multiple years)
 </p>
 
 <div class="section-header">Documentation</div>
