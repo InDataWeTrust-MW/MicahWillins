@@ -67,9 +67,9 @@
     .container {
         width: min(1100px, calc(100vw - 32px));
         max-width: 1100px;
-        margin: clamp(12px, 4vw, 40px) auto;
+        margin: clamp(12px, 2vw, 24px) auto;
         background: #fff;
-        padding: clamp(20px, 3vw, 40px) clamp(18px, 5vw, 60px);
+        padding: clamp(18px, 2vw, 28px) clamp(18px, 4vw, 44px);
         box-shadow: 0 0 20px rgba(0,0,0,0.08);
         border-radius: 10px;
         border-left: 6px solid var(--bit-blue);
@@ -134,7 +134,7 @@
     }
 
     .identity-block {
-        margin-bottom: 18px;
+        margin-bottom: 12px;
     }
 
     h1 {
@@ -180,8 +180,8 @@
         flex-wrap: wrap;
         font-size: 1.45em;
         font-weight: 600;
-        margin-top: 40px;
-        margin-bottom: 14px;
+        margin-top: 24px;
+        margin-bottom: 10px;
         padding-bottom: 6px;
         border-bottom: 3px solid var(--bit-blue);
         color: var(--bit-blue);
@@ -195,11 +195,132 @@
         letter-spacing: 0.01em;
     }
 
+    .career-summary {
+        font-family: "Aptos Display", "Aptos", "Segoe UI", sans-serif;
+    }
+
+    .section-copy {
+        font-family: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
+    }
+
+    .banded-list {
+        margin: 0;
+        border: 1px solid #d8e0ec;
+        border-radius: 8px;
+        overflow: hidden;
+        line-height: 1.5;
+    }
+
+    .banded-row {
+        display: grid;
+        grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+        gap: 8px 24px;
+        padding: 10px 14px;
+        background: #fff;
+        break-inside: avoid;
+    }
+
+    .banded-row:nth-child(odd) {
+        background: #eef3fa;
+    }
+
+    .banded-row + .banded-row {
+        border-top: 1px solid #d8e0ec;
+    }
+
+    .banded-row dt {
+        font-family: "Aptos Display", "Aptos", "Segoe UI", sans-serif;
+        font-weight: 700;
+        color: var(--bit-blue);
+    }
+
+    .banded-row dd {
+        font-family: "Aptos Narrow", "Aptos", "Segoe UI", sans-serif;
+        margin: 0;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .download-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .top-banner-links .download-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .skills-toggle {
+        margin-left: 0;
+        padding: 6px 12px;
+        border: 1px solid #c5d3e7;
+        border-radius: 6px;
+        background: #eef3fa;
+        color: var(--bit-blue);
+        font: 600 0.85rem "Aptos Display", "Aptos", "Segoe UI", sans-serif;
+        cursor: pointer;
+    }
+
+    .skills-toggle:hover {
+        background: #dfe9f7;
+    }
+
+    .skills-toggle:focus-visible {
+        outline: 2px solid var(--bit-blue);
+        outline-offset: 3px;
+    }
+
+    @media screen {
+        #technical-skills.is-collapsed {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+            background: #f9fafc;
+        }
+
+        #technical-skills.is-collapsed .banded-row {
+            display: block;
+            padding: 7px 12px;
+            border: 1px solid #d8e0ec;
+            border-radius: 6px;
+            background: #eef3fa;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+        }
+
+        #technical-skills.is-collapsed dd {
+            display: none;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .banded-row {
+            grid-template-columns: minmax(0, 1fr);
+            gap: 4px;
+            padding: 10px 12px;
+        }
+    }
+
+    @media print {
+        .skills-toggle {
+            display: none;
+        }
+
+        .banded-row {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+    }
+
     /* ===========================
        COLLAPSIBLE SECTIONS
        =========================== */
     details {
-        margin-bottom: 22px;
+        margin-bottom: 12px;
         border-radius: 8px;
         background: var(--band-even);
         border: 1px solid #ddd;
@@ -212,6 +333,7 @@
     }
 
     summary {
+        font-family: "Aptos Display", "Aptos", "Segoe UI", sans-serif;
         padding: 14px 18px;
         font-size: 1.18em;
         font-weight: 600;
@@ -424,15 +546,17 @@
             <a href="mailto:Micah.Willins.88@gmail.com">Email</a>
             <a href="https://www.linkedin.com/in/indatawetrust-mw" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <div class="download-group" aria-label="Resume downloads">
-                <a href="Micah-Willins-ATS.docx" class="download-button word-button" download aria-label="Download Word document">
+                <a href="Micah-Willins-ATS.docx" class="download-button word-button" download="Micah-Willins-ATS.docx" aria-label="Download Word document">
                     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
                         <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5zm1 7h-4V5l5 5zm-6 7h8v2H9v-2zm0-4h8v2H9v-2zm0-4h5v2H9V9z" fill="currentColor"/>
                     </svg>
+                    <span>Download Word (ATS)</span>
                 </a>
-                <a href="assets/Micah-Willins-Resume.pdf" class="download-button pdf-button" data-download-filename="Micah-Willins-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="Download PDF document">
+                <a href="assets/Micah-Willins-Resume.pdf" class="download-button pdf-button" download="Micah-Willins-Resume.pdf" aria-label="Download PDF document">
                     <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
                         <path d="M7 2.75h7l4.25 4.25v14H7a2 2 0 0 1-2-2v-14a2 2 0 0 1 2-2zM14 2.75V7h4.25M12 10v7m0 0-3-3m3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
+                    <span>Download PDF (1 page)</span>
                 </a>
             </div>
         </nav>
@@ -440,20 +564,91 @@
 </div>
 
 <div class="section-header">Career Summary</div>
-<p>Data and analytics leader with 14+ years of experience translating technical infrastructure into strategic business advantage. Proven track record of modernizing data platforms and reporting systems that accelerate decision-making, reduce operational risk, and improve organizational alignment. Expertise in designing governance frameworks and trusted analytics that enable leadership to act on complex data with confidence. Bridges the gap between technical execution and business outcomes—consistently identifying where infrastructure investments yield measurable returns in efficiency, compliance, and strategic clarity.</p>
+<p class="career-summary">Data and analytics leader with 14+ years of experience translating technical infrastructure into strategic business advantage. Proven track record of modernizing data platforms and reporting systems that accelerate decision-making, reduce operational risk, and improve organizational alignment. Expertise in designing governance frameworks and trusted analytics that enable leadership to act on complex data with confidence. Bridges the gap between technical execution and business outcomes—consistently identifying where infrastructure investments yield measurable returns in efficiency, compliance, and strategic clarity.</p>
 
 <div class="section-header">Strategic Focus</div>
-<p><b>Business Outcomes:</b> Executive Decision Clarity | Risk & Compliance Acceleration | Operational Efficiency | Trust-Based Analytics<br>
-<b>Technical Capabilities:</b> Data Architecture | ETL & API Integration | Reporting Modernization | Business Intelligence | Data Governance | Workflow Automation | KPI & Metric Design | Cross-Functional Leadership | Stakeholder Alignment</p>
+<dl class="banded-list">
+    <div class="banded-row">
+        <dt>Business Outcomes</dt>
+        <dd>Executive Decision Clarity | Risk &amp; Compliance Acceleration | Operational Efficiency | Trust-Based Analytics</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Technical Capabilities</dt>
+        <dd>Data Architecture | ETL &amp; API Integration | Reporting Modernization | Business Intelligence | Data Governance | Workflow Automation | KPI &amp; Metric Design | Cross-Functional Leadership | Stakeholder Alignment</dd>
+    </div>
+</dl>
 
 <div class="section-header">Technical Skills</div>
-<p>
-<b>Languages</b> {SQL, Python, SAS, PowerShell, VB, DAX}<br>
-<b>BI & Visualization</b> {Tableau, Power BI, SSIS, SSRS, Dashboard Design}<br>
-<b>Data Platforms</b> {SQL Server, PostgreSQL, MySQL, Oracle, SASGRID, AWS, Azure}<br>
-<b>Automation & Integration</b> {ETL, API Integration, Workflow Automation, SaaS Integrations}<br>
-<b>Tools</b> {GitHub, ServiceNow, Workday, MS O365, SSMS, DBeaver, VS Code, SAS EGP}
-</p>
+<dl class="banded-list" id="technical-skills">
+    <div class="banded-row">
+        <dt>Languages &amp; Development</dt>
+        <dd>SQL, Python, SAS, PowerShell, Visual Basic, VBA, VB.NET, FastAPI, Docker</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Data Engineering</dt>
+        <dd>ETL/ELT, REST APIs, SaaS Integration, Pipeline Orchestration, Incremental Loads, Change Detection, Reconciliation, Error Handling, Dimensional Modeling, Query Tuning</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Cloud Warehousing &amp; Distributed Processing</dt>
+        <dd>Snowflake (Snowpipe, External Stages, Tasks, Streams, Warehouse &amp; Access Management), Databricks, PySpark, Delta Lake; working knowledge: Amazon Redshift, Google BigQuery</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Databases &amp; Storage</dt>
+        <dd>SAS Grid (SASGRID) Development &amp; Administration, SQLite, NoSQL (MongoDB); querying/connectivity: SQL Server, PostgreSQL, MySQL, Oracle; working knowledge: Elasticsearch; familiarity: Teradata, IBM DB2, Hadoop/Hive</dd>
+    </div>
+    <div class="banded-row">
+        <dt>BI &amp; Semantic Modeling</dt>
+        <dd>Power BI, DAX, Power Query (M), Star Schemas, Semantic Models, Dashboard Design, Row-Level Security, SSRS; Microsoft Access, SAP BusinessObjects (SAP BOBJ), SAP Analytics Cloud (SAC): Visualization Development, Report Subscriptions &amp; Data Delivery; Tableau: Project Delivery, Server Publishing &amp; Refresh, Light Administration</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Cloud Services</dt>
+        <dd>AWS S3, Lambda, EC2, IAM, RDS Connectivity; Azure Storage, Azure Data Factory; project experience: Azure Synapse Pipelines &amp; Serverless SQL, Azure Functions; developing: Microsoft Fabric Lakehouse, Dataflows Gen2</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Orchestration &amp; Transformation</dt>
+        <dd>SSIS, SQL Server Agent, cron, Scheduled Jobs, Logging &amp; Alerts; project experience: Apache Airflow, dbt (SQL/Jinja Models, Tests, Scheduling)</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Production Analytics</dt>
+        <dd>Forecasting Pipelines, Rules-Based Models, Feature Engineering, Time-Based Holdouts, Baseline Comparisons, Leakage Prevention, Forecast Error &amp; Drift Monitoring</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Data Science Experiments &amp; Prototypes</dt>
+        <dd>Statistical Inference, Bootstrapping, Regression, Classification, ARIMA/SARIMA, Clustering, A/B Testing, Cross-Validation, MAE/RMSE, Precision/Recall, ROC-AUC, Linear Programming</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Scientific Python</dt>
+        <dd>pandas, NumPy, PyArrow; modeling/experiments: scikit-learn, statsmodels, XGBoost, LightGBM, PuLP</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Application &amp; Workflow Automation</dt>
+        <dd>Streamlit, openpyxl, Pillow, ReportLab, cryptography, pywebview, pywin32, Excel &amp; Windows Automation</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Solution Architecture &amp; Governance</dt>
+        <dd>Requirements Discovery, Integration Contracts, Data Architecture, Metric Definitions &amp; Lineage, RBAC, Least Privilege, Reliability &amp; Observability, Nonfunctional Requirements, Technology Selection, Design Review, Delivery Leadership</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Information Security Analytics</dt>
+        <dd>Vulnerability Management, Identity &amp; Access Management (IAM), Data Loss Prevention (DLP), Phishing, Privileged Access Management (PAM), Cyber Threat Reporting; Security &amp; Operational Metrics, Data Behavior Analytics, Data Integration, Process Automation, Metric-Program Governance &amp; Stakeholder Leadership</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Operations &amp; Workforce Analytics</dt>
+        <dd>Call/Contact Center Metric-Program Leadership, Service Levels, Average Handle Time (AHT), Abandonment, Occupancy, Utilization, Staffing &amp; Capacity Forecasting, Workforce/Shift Scheduling, Employee Attrition (Turnover)</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Enterprise Platforms &amp; Data Extraction</dt>
+        <dd>Rocket Mobius (formerly ASG Mobius / ViewDirect): Navigation, REST API Extraction &amp; Parsing; Salesforce CRM: Navigation, API Integration &amp; Data Extraction; Okta &amp; Ping Identity: Usage Data Extraction &amp; Behavioral Analysis; Digital.ai Agility: Project Scheduling, Reporting, Productivity Communication &amp; Data Extraction</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Microsoft Productivity &amp; Collaboration</dt>
+        <dd>Microsoft Office / Microsoft 365 (O365); Microsoft Excel: Formulas, PivotTables, Power Query, VBA, ODBC, Automation &amp; Proof-of-Concept Solutions; SharePoint / SharePoint Online: Repository Setup &amp; Management, Embedded Reporting, Knowledge-Base Governance, Power Apps, Workflow Automation &amp; Data Analysis</dd>
+    </div>
+    <div class="banded-row">
+        <dt>Tools</dt>
+        <dd>Git, GitHub, ServiceNow, Workday, Oracle SQL Developer (Querying &amp; Data Extraction), SSMS, DBeaver, VS Code, SAS Enterprise Guide</dd>
+    </div>
+</dl>
 
 <div class="section-header">Professional Experience <span class="section-header-note">Expand roles for details</span></div>
 
@@ -556,20 +751,20 @@
 </details>
 
 <div class="section-header">Education</div>
-<p>
+<p class="section-copy">
 University of Cincinnati — Coursework in Cultural Anthropology, 2007–2009<br>
 Cincinnati State — Coursework in Computer Networking, 2010–2011<br>
 Fifth Third Bank — Information Security Leadership Program, 2022–2023
 </p>
 
 <div class="section-header">Awards</div>
-<p>
+<p class="section-copy">
 Horizon Award — Fifth Third Bank (2022)<br>
 Spirit of the Pin — Fifth Third Bank (multiple years)
 </p>
 
 <div class="section-header">Documentation</div>
-<p>
+<p class="section-copy">
     <a href="#" onclick="openEmbeddedDoc('doc-tonja-specht-recommendation', 'Recommendation Letter - Tonja Specht'); return false;">Recommendation Letter - Tonja Specht</a><br>
     <a href="#" onclick="openEmbeddedDoc('doc-john-jones-recognition', 'Spirit of the Pin - John Jones'); return false;">Spirit of the Pin - John Jones</a><br>
     <a href="#" onclick="openEmbeddedDoc('doc-tina-smith-recognition', 'Spirit of the Pin - Tina Smith'); return false;">Spirit of the Pin - Tina Smith</a>
@@ -751,6 +946,21 @@ Spirit of the Pin — Fifth Third Bank (multiple years)
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        var skills = document.getElementById('technical-skills');
+        skills.classList.add('is-collapsed');
+        var skillsToggle = document.createElement('button');
+        skillsToggle.type = 'button';
+        skillsToggle.className = 'skills-toggle';
+        skillsToggle.textContent = 'Expand skills';
+        skillsToggle.setAttribute('aria-controls', skills.id);
+        skillsToggle.setAttribute('aria-expanded', 'false');
+        skillsToggle.addEventListener('click', function () {
+            var collapsed = skills.classList.toggle('is-collapsed');
+            skillsToggle.setAttribute('aria-expanded', String(!collapsed));
+            skillsToggle.textContent = collapsed ? 'Expand skills' : 'Collapse skills';
+        });
+        skills.previousElementSibling.appendChild(skillsToggle);
+
         function closeOtherSections(activeSection) {
             var allSections = document.querySelectorAll('details');
             allSections.forEach(function (otherSection) {
@@ -845,55 +1055,9 @@ Spirit of the Pin — Fifth Third Bank (multiple years)
             });
         }
 
-        function bindPdfDownloadLinks() {
-            var downloadLinks = document.querySelectorAll('.pdf-download-link');
-            downloadLinks.forEach(function (link) {
-                link.addEventListener('click', function (event) {
-                    event.preventDefault();
-
-                    var originalUrl = link.getAttribute('href');
-                    if (!originalUrl) {
-                        return;
-                    }
-
-                    var rawUrl = originalUrl
-                        .replace('https://github.com/', 'https://raw.githubusercontent.com/')
-                        .replace('/blob/', '/');
-
-                    fetch(rawUrl)
-                        .then(function (response) {
-                            if (!response.ok) {
-                                throw new Error('Download failed');
-                            }
-                            return response.blob();
-                        })
-                        .then(function (blob) {
-                            var objectUrl = URL.createObjectURL(blob);
-                            var tempLink = document.createElement('a');
-                            tempLink.href = objectUrl;
-                            tempLink.download = link.getAttribute('data-download-filename') || 'resume.pdf';
-                            document.body.appendChild(tempLink);
-                            tempLink.click();
-                            tempLink.remove();
-                            URL.revokeObjectURL(objectUrl);
-                        })
-                        .catch(function () {
-                            window.open(rawUrl, '_blank', 'noopener');
-                        });
-                });
-            });
-        }
-
-        bindPdfDownloadLinks();
         bindSectionAccordion();
         bindNestedListToggles();
     });
 </script>
 </body>
 </html>
-
-
-
-
-
-

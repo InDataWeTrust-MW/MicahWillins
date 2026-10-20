@@ -17,23 +17,13 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
-SOURCE = Path(r"c:\Personal\GitRepo\MicahWillins_DEV\Resume.html")
-OUTPUT = Path(r"c:\Personal\GitRepo\MicahWillins_DEV\Micah-Willins-ATS.docx")
+DEV_ROOT = Path(__file__).resolve().parents[1]
+SOURCE = DEV_ROOT / "Resume.html"
+OUTPUT = DEV_ROOT / "Micah-Willins-ATS.docx"
 
 BRAND_BLUE = RGBColor(31, 75, 153)
 LINKEDIN_URL = "https://www.linkedin.com/in/indatawetrust-mw"
 RESUME_URL = "https://indatawetrust-mw.github.io/MicahWillins/"
-
-# ATS keyword bank appended (not replacing) the real content, so recruiter
-# keyword scans pick up common synonyms without fabricating new claims.
-ATS_KEYWORD_LINE = (
-    "Keywords: Data Engineering, Data Architecture, Analytics Leadership, Business Intelligence, "
-    "ETL, API Integration, Data Governance, Data Quality, Workflow Automation, Reporting Modernization, "
-    "KPI Design, Executive Reporting, Stakeholder Alignment, Cross-Functional Leadership, Risk & Compliance, "
-    "SQL, Python, SAS, PowerShell, DAX, Tableau, Power BI, SSIS, SSRS, SQL Server, PostgreSQL, MySQL, Oracle, "
-    "AWS, Azure, ServiceNow, Workday, GitHub"
-)
-
 
 def clean(text: str) -> str:
     text = text.replace("\u2011", "-")
@@ -54,7 +44,14 @@ def add_hyperlink(paragraph, text: str, url: str) -> None:
     color = OxmlElement("w:color")
     color.set(qn("w:val"), "0563C1")
     r_pr.append(color)
-    r_pr.append(OxmlElement("w:u"))
+    fonts = OxmlElement("w:rFonts")
+    for attribute in ("ascii", "hAnsi", "eastAsia", "cs"):
+        fonts.set(qn("w:" + attribute), "Aptos Narrow")
+    r_pr.append(fonts)
+    size = OxmlElement("w:sz")
+    size.set(qn("w:val"), "15")
+    r_pr.append(size)
+    r_pr.append(OxmlElement("w:i"))
     run.append(r_pr)
     t = OxmlElement("w:t")
     t.text = text
@@ -71,6 +68,7 @@ def add_heading(doc: Document, text: str) -> None:
     run.font.color.rgb = BRAND_BLUE
     p.paragraph_format.space_before = Pt(10)
     p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.keep_with_next = True
 
 
 def li_text(li: Tag) -> tuple[str, str]:
@@ -100,6 +98,9 @@ def build() -> None:
     container = soup.find("div", class_="container")
 
     doc = Document()
+    doc.styles["Normal"].font.size = Pt(10)
+    doc.core_properties.title = "Micah Willins - Detailed ATS Resume"
+    doc.core_properties.author = "Micah Willins"
     for section in doc.sections:
         section.top_margin = Inches(0.5)
         section.bottom_margin = Inches(0.5)
@@ -123,12 +124,21 @@ def build() -> None:
     contact_items = [clean(s.get_text()) for s in container.select(".top-banner-contact .contact-item")]
     contact_items = [c for c in contact_items if c and c != "|"]
     contact_p = doc.add_paragraph()
-    contact_run = contact_p.add_run(" | ".join(contact_items) + "  |  ")
+    contact_run = contact_p.add_run(" | ".join(contact_items))
     contact_run.font.size = Pt(10)
-    add_hyperlink(contact_p, "LinkedIn", LINKEDIN_URL)
-    contact_p.add_run("  |  ")
-    add_hyperlink(contact_p, "View Full Details & References", RESUME_URL)
     contact_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    links_p = doc.add_paragraph()
+    links_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    add_hyperlink(links_p, "LinkedIn", LINKEDIN_URL)
+    separator = links_p.add_run(" | ")
+    separator.font.name = "Aptos Narrow"
+    separator.font.size = Pt(7.5)
+    separator.italic = True
+    add_hyperlink(
+        links_p,
+        "View Hosted Resume for detailed specifics, verified references, and documented award samples",
+        RESUME_URL,
+    )
 
     # Sections rendered in source order: Career Summary, Strategic Focus, Technical Skills
     section_headers = container.find_all("div", class_="section-header", recursive=False)
@@ -140,6 +150,20 @@ def build() -> None:
             break
         add_heading(doc, title)
         nxt = header.find_next_sibling()
+        if nxt and nxt.name == "dl":
+            for index, row in enumerate(nxt.select(".banded-row")):
+                para = doc.add_paragraph()
+                para.paragraph_format.space_before = Pt(4)
+                para.paragraph_format.space_after = Pt(4)
+                para.paragraph_format.keep_together = True
+                shading = OxmlElement("w:shd")
+                shading.set(qn("w:fill"), "EEF3FA" if index % 2 == 0 else "FFFFFF")
+                para._p.get_or_add_pPr().append(shading)
+                label = para.add_run(clean(row.find("dt").get_text()) + ": ")
+                label.font.name = "Aptos Display"
+                label.bold = True
+                label.font.color.rgb = BRAND_BLUE
+                para.add_run(clean(row.find("dd").get_text())).font.name = "Aptos Narrow"
         if nxt and nxt.name == "p":
             # Preserve <br> line breaks and bold labels within the paragraph.
             lines: list[list[Tag | NavigableString]] = [[]]
@@ -157,9 +181,10 @@ def build() -> None:
                     if isinstance(node, NavigableString):
                         text = clean(str(node))
                         if text:
-                            para.add_run(text)
+                            para.add_run(text).font.name = "Aptos Display"
                     elif isinstance(node, Tag) and node.name in ("b", "strong"):
                         run = para.add_run(clean(node.get_text()))
+                        run.font.name = "Aptos Display"
                         run.bold = True
 
     # Professional Experience
@@ -168,32 +193,40 @@ def build() -> None:
         summary = details.find("summary")
         role_p = doc.add_paragraph()
         role_run = role_p.add_run(clean(summary.get_text()))
+        role_run.font.name = "Aptos Display"
         role_run.bold = True
         role_run.font.size = Pt(10.5)
         role_p.paragraph_format.space_before = Pt(8)
         role_p.paragraph_format.space_after = Pt(1)
+        role_p.paragraph_format.keep_with_next = True
 
         body = details.find("div")
         lead = body.find(["p"])
         if lead is not None:
             lead_p = doc.add_paragraph()
             lead_run = lead_p.add_run(clean(lead.get_text()))
+            lead_run.font.name = "Aptos Narrow"
             lead_run.italic = True
             lead_p.paragraph_format.left_indent = Inches(0.2)
             lead_p.paragraph_format.space_after = Pt(3)
+            lead_p.paragraph_format.keep_with_next = True
 
         outline = body.find("ul", class_="docx-outline")
         if outline is not None:
             for li in outline.find_all("li", recursive=False):
                 lead_text, rest_text = li_text(li)
-                lead_text = lead_text.rstrip(":").strip()
                 bullet_p = doc.add_paragraph(style="List Bullet")
                 bullet_p.paragraph_format.left_indent = Inches(0.4)
                 bullet_p.paragraph_format.space_after = Pt(3)
+                bullet_p.paragraph_format.keep_together = True
                 if lead_text:
-                    bullet_p.add_run(lead_text)
-                else:
-                    bullet_p.add_run(rest_text)
+                    lead_run = bullet_p.add_run(lead_text)
+                    lead_run.font.name = "Aptos Narrow"
+                    lead_run.bold = True
+                if rest_text:
+                    if lead_text:
+                        bullet_p.add_run(" ")
+                    bullet_p.add_run(rest_text).font.name = "Aptos Narrow"
 
     # Education / Awards (verbatim from source)
     for header in section_headers:
@@ -203,21 +236,15 @@ def build() -> None:
         add_heading(doc, title)
         nxt = header.find_next_sibling()
         if nxt and nxt.name == "p":
-            for line in clean(nxt.get_text().replace("<br>", "\n")).split("\n"):
-                pass
             # Rebuild using <br> boundaries directly from the tag.
             text = nxt.decode_contents()
             for chunk in re.split(r"<br\s*/?>", text):
                 chunk_text = clean(BeautifulSoup(chunk, "html.parser").get_text())
                 if chunk_text:
                     p = doc.add_paragraph(chunk_text, style="List Bullet")
+                    for run in p.runs:
+                        run.font.name = "Aptos Narrow"
                     p.paragraph_format.space_after = Pt(1)
-
-    # ATS keyword line (additive, clearly labeled, not a fabricated claim)
-    doc.add_paragraph()
-    add_heading(doc, "Core Keywords")
-    kw_p = doc.add_paragraph(ATS_KEYWORD_LINE)
-    kw_p.paragraph_format.space_after = Pt(2)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUTPUT)
